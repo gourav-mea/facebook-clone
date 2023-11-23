@@ -1,0 +1,27 @@
+<div class="card p-3 m-4">
+  <div class="card-header text-center">
+      <h2 class="card-title">Add Post</h2>
+  </div>
+  <div class="card-body">
+      <form [formGroup]="addPost" (ngSubmit)="onPost()">
+          <div class="form-group mb-4">
+            <input type="text" class="form-control" id="postText" placeholder="Write something here about the post" formControlName="postText">
+          </div>
+          <div class="form-group mb-4">
+            <label for="privacy">Privacy setting</label>
+            <select class="form-control" id="privacy" formControlName="privacySetting">
+              <option value="PUBLIC">Public</option>
+              <option value="ONLY_FRIENDS">Friends</option>
+            </select>
+          </div>
+          <div class="form-group mb-4">
+            <label for="image">Upload image</label>
+            <input type="file" class="form-control-file" id="image" (change)="handleUpload($event)" formControlName="postImage">
+          </div>
+          <div class="text-center">
+              <button type="submit" class="btn btn-outline-primary">Post</button>
+          </div>
+      </form>
+  </div>
+</div>
+<div class="snackbar" [class.show]="isVisible">{{errorMessage}}</div>

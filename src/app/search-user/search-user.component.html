@@ -1,0 +1,29 @@
+<div class="text-center">
+    <form class="form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Search Users:</mat-label>
+            <input type="text"
+                    placeholder="Search users"
+                    aria-label="Number"
+                    matInput
+                    [formControl]="searchControl"
+                    [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let user of filteredOptions | async" [value]="user">
+                <div class="container pt-1">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{user.profilePicture}}" alt="user"
+                                class="profile-photo-lg">
+                        </div>
+                        <div class="col-8">
+                            <a [routerLink]="['/friendprofile',user.userId]" class="profile-link text-decoration-none">{{user.username}}</a>
+                            <p>{{user.bio | slice: 0:12}}...</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>    
+</div>    

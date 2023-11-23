@@ -1,0 +1,27 @@
+<div class="d-flex align-items-center justify-content-center">
+    <div *ngIf="mergedFriendRequestList==null" class="mt-5 text-center" style="color: rgb(129, 124, 118);">
+        <p>No, friend request for you.</p>
+        <p>Click here to explore and find friends.</p>
+        <div class="text-center">
+            <button class="btn btn-outline-dark" (click)="navigateToSearch()">Find Friends</button>
+        </div>
+    </div>
+    <div *ngIf="mergedFriendRequestList!=null" class="friendrequest-list m-2 p-2">
+        <div class="friendrequest my-2">
+            <div class="row" *ngFor="let friendRequest of mergedFriendRequestList">
+                <div class="col-md-2 col-sm-2">
+                    <img src="{{friendRequest.profilePicture}}" alt="user"
+                        class="profile-photo-lg">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <h5><a [routerLink]="['/friendprofile/',friendRequest.userId]" class="profile-link text-decoration-none text-dark">{{friendRequest.username}}</a></h5>
+                    <p>{{friendRequest.bio}}</p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <button class="btn btn-outline-success pull-right" style="margin-right: 10px;" (click)="acceptFriendRequest(friendRequest.id, friendRequest.sentTo, friendRequest.sentFrom)">Accept</button>
+                    <button class="btn btn-outline-danger pull-right" (click)="rejectFriendRequest(friendRequest.id, friendRequest.sentTo, friendRequest.sentFrom)">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

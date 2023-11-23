@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="panel rounded shadow">
+                <div class="panel-body">
+                    <div class="inner-all">
+                        <ul class="list-unstyled">
+                            <li class="text-center">
+                                <img data-no-retina="" *ngIf="userProfile?.profilePicture!=null" class="img-circle img-responsive img-bordered-primary" style="max-width:250px;" src="{{userProfile && userProfile.profilePicture}}" alt="Profile Picture">
+                                <img data-no-retina="" *ngIf="userProfile?.profilePicture==null" class="img-circle img-responsive img-bordered-primary" style="max-width:250px;" src="../../../assets/man.png" alt="Profile Picture">
+                            </li>
+                            <li class="text-center">
+                                <h4 class="text-capitalize">{{userProfile && userProfile.username}}</h4>
+                                <p class="text-muted text-capitalize">{{userProfile && userProfile.bio}}</p>
+                            </li>
+                            <li><br></li>
+                            <li>
+                                <div class="text-center">
+                                    <a (click)="onEditClick()" class="btn d-flex align-items-center justify-content-center m-2" style="border: 1px solid black;">Edit Account&nbsp;&nbsp;<mat-icon>edit</mat-icon></a>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="onLogOut()" class="btn d-flex align-items-center justify-content-center m-2" style="border: 1px solid black;">Logout&nbsp;&nbsp;<mat-icon>logout</mat-icon></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-8">
+            <div class="profile-cover">
+                <div class="cover rounded shadow no-overflow">
+                    <div class="inner-cover">
+                        <img  src="../../../assets/infosys-mysore.jpg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
+                    </div>
+                </div>
+            </div>
+            <mat-tab-group [selectedIndex]="(userService.userProfileTabIndex$ | async)" dynamicHeight animationDuration="500ms" class="mt-2">
+                <mat-tab label="Photos">
+                    <ng-template mat-tab-label>
+                        <mat-icon>photos</mat-icon>&nbsp;Photos
+                    </ng-template>
+                    <app-user-photos [userProfile]="userProfile"></app-user-photos>
+                </mat-tab>
+                <mat-tab label="Friends">
+                    <ng-template mat-tab-label>
+                        <mat-icon>group</mat-icon>&nbsp;Friends
+                    </ng-template>
+                    <app-friend-list></app-friend-list>
+                </mat-tab>
+                <mat-tab label="About">
+                    <ng-template mat-tab-label>
+                        <mat-icon>info</mat-icon>&nbsp;About
+                    </ng-template>
+                    <app-about-me [userProfile]="userProfile"></app-about-me>
+                </mat-tab>
+            </mat-tab-group>
+    </div>
+</div>
+
+

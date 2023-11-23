@@ -1,0 +1,25 @@
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="mt-3 col-8 offset-2" *ngFor="let post of friendPostList">
+                <div class="card  mx-auto">
+                    <div class="card-header d-flex align-items-center">
+                            <img src="{{friendProfile && friendProfile.profilePicture}}" class="img-fluid rounded-circle" style="width: 30px;height: 30px;" alt="Profile Image">
+                        <h5 class="card-title m-0">{{friendProfile && friendProfile.username}}</h5>
+                    </div>
+                    <div>
+                        <img src="{{post.postImage}}" class="img-fluid" alt="Image in Body">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-start">{{post.postText}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-link like-button" (click)="addLike(post.postId)"><mat-icon [style.color]="isLikedBy[post.postId] ? 'red' : 'blue'">thumb_up</mat-icon><span>{{likeArray[post.postId]}}</span></button>
+                        <button class="btn btn-link comment-button"><mat-icon>comment</mat-icon></button>
+                        <button class="btn btn-link comment-button"><mat-icon>add</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>   
+</div>

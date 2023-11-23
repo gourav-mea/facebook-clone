@@ -1,0 +1,76 @@
+<mat-dialog-content style="height: 100%;">
+    <div class="wrapper">
+        <div class="title">
+            facebook
+        </div>
+        <form class="form" [formGroup]="registrationForm" (ngSubmit)="onRegistration()">
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" formControlName="username" id="username"
+                    placeholder="Enter you full name">
+                    <span class="text-danger" id="usernameError"
+                        *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].dirty">First
+                        letter of each should be capital.</span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" formControlName="email" id="email"
+                    placeholder="Enter your email id">
+                    <span class="text-danger" id="emailError"
+                        *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].dirty">Please
+                        enter a valid email address</span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select formControlName="gender" class="form-control" id="gender">
+                    <option value="">Select gender</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="OTHERS">Other</option>
+                </select>
+                <span class="text-danger" id="genderError"
+                    *ngIf="registrationForm.controls['gender'].invalid && registrationForm.controls['gender'].dirty">
+                    Choose one from the 3 options
+                </span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth">
+                    <span class="text-danger" id="dateOfBirthError"
+                        *ngIf="registrationForm.controls['dateOfBirth'].invalid && registrationForm.controls['dateOfBirth'].dirty">
+                        User must be 13 year old!
+                    </span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password" placeholder="Enter your password here">
+                    <span class="text-danger" id="passwordError"
+                        *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].dirty">
+                        Password length must be between 8 to 16 and of valid pattern.
+                    </span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" placeholder="Enter your password here">
+                    <span class="text-danger" id="confirmPasswordError"
+                        *ngIf="checkConfirmPassword()">
+                        Password didn't match
+                    </span>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-success"
+                    [disabled]="registrationForm.pristine || registrationForm.invalid || checkConfirmPassword()">Register</button>
+            </div>
+           
+        </form>
+    </div>
+</mat-dialog-content>
+<div class="text-center">
+    <div class="snackbar" [class.show]="isVisible">{{errorMessage}}</div>
+</div>

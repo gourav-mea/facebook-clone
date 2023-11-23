@@ -1,0 +1,29 @@
+<div>
+    <!-- <div *ngIf="isFriendListEmpty()" class="mt-5 text-center" style="color: rgb(129, 124, 118);">
+        <p>Find your first friend here.</p>
+        <p>Click here to go to search new friends.</p>
+        <div class="text-center">
+            <button class="btn btn-sm btn-outline-dark" (click)="navigateToSearch()">Find Friends</button>
+        </div>
+    </div> -->
+    <div *ngIf="friendList!=null">
+        <div class="friend-list text-center m-3 p-3">
+            <div class="friend my-2" *ngFor="let friend of friendList">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        <img src="{{friend && friend.profilePicture}}" alt="user"
+                            class="profile-photo-lg">
+                    </div>
+                    <div class="col-md-7 col-sm-7">
+                        <h5><a [routerLink]="['/friendprofile',friend.userId]" class="profile-link">{{friend && friend.username}}</a></h5>
+                        <p>{{friend && friend.bio}}</p>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <button class="btn btn-outline-danger pull-right" (click)="removeFriend(friend.userId)">Remove Friend</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

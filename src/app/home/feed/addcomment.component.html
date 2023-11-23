@@ -1,0 +1,14 @@
+<div mat-dialog-title class="text-center text-primary">
+    <h2 class="m-2">Comment</h2>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="commentForm" (ngSubmit)="onComment()">
+        <div class="form-group m-2">
+        <input type="text" placeholder="Add your Valuable Comment" formControlName="comment" class="form-control"/>
+        </div>
+        <div class="text-center m-2">
+            <button class="btn btn-outline-primary">Comment</button>
+        </div>
+    </form>
+</div>
+<div class="snackbar" [class.show]="isVisible">{{errorMessage}}</div>

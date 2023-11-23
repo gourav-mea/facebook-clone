@@ -1,0 +1,7 @@
+<div mat-dialog-title class="card">
+    <div class="card-title text-center text-primary mt-3" style="font-size: 21px;">Comments</div><hr>
+    <div class="card-body" *ngFor="let comment of allComments;let i=index">
+        <span style="font-size: 14px;">{{i+1}}. {{comment.commentText}}</span> &nbsp;<span> {{comment.timestampColumn | date}} </span>
+        <hr>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.friendrequest-list .friendrequest {
+    padding: 5px 0;
+    border-bottom: 1px solid #ebefef;
+    margin-bottom: 20px;
+}
+.friendrequest-list{
+    width:60%;
+    border: 2px solid rgb(244, 237, 237);
+    border-radius: 2%;
+}
+img.profile-photo-lg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

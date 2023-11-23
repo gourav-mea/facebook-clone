@@ -1,0 +1,17 @@
+<div class="content">
+    <div class="flex-div">
+      <div class="name-content">
+        <h1 class="logo">Facebook</h1>
+        <p>Connect with friends and the world around you on Facebook.</p>
+      </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <input type="text" placeholder="Username" formControlName="username" required />
+          <input type="password" placeholder="Password" formControlName="password" required>
+          <button type ="submit" class="login">Log In</button>
+          <a (click)="onForgotPassword()">Forgot Password ?</a>
+          <hr>
+          <input mat-button class="create-account" (click)="openRegisterDialog()" value="Create New Account">     
+        </form>
+    </div>
+  </div>
+  <div class="snackbar" [class.show]="isVisible">{{errorMessage}}</div>

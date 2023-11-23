@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="panel rounded shadow">
+                <div class="panel-body">
+                    <div class="inner-all">
+                        <ul class="list-unstyled">
+                            <li class="text-center">
+                                <img data-no-retina="" *ngIf="friendProfile?.profilePicture!=null" class="img-circle img-responsive img-bordered-primary" style="max-width:250px;" src="{{friendProfile && friendProfile.profilePicture}}" alt="Profile Picture">
+                                <img data-no-retina="" *ngIf="friendProfile?.profilePicture==null" class="img-circle img-responsive img-bordered-primary" style="max-width:250px;" src="../../assets/man.png" alt="Profile Picture">
+                            </li>
+                            <li class="text-center">
+                                <h4 class="text-capitalize">{{friendProfile && friendProfile.username}}</h4>
+                                <p class="text-muted text-capitalize">{{friendProfile && friendProfile.bio}}</p>
+                            </li>
+                            <li><br></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <button class="btn btn-primary" *ngIf="checkStatus(1)" (click)="removeFriend()">Unfriend</button>
+                <button class="btn btn-success" *ngIf="checkStatus(2)" (click)="addFriend()">Add Friend</button>
+                <div *ngIf="checkStatus(3)">
+                    <button class="btn btn-primary mr-2">Pending</button>
+                    <button class="btn btn-danger" (click)="removeFriendRequest()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-8">
+            <div class="profile-cover">
+                <div class="cover rounded shadow no-overflow">
+                    <div class="inner-cover">
+                        <img  src="../../../assets/infosys-mysore.jpg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
+                    </div>
+                </div>
+            </div>
+            <mat-tab-group dynamicHeight animationDuration="500ms" class="mt-2">
+                <mat-tab label="Photos">
+                    <ng-template mat-tab-label>
+                        <mat-icon>photos</mat-icon>&nbsp;Photos
+                    </ng-template>
+                    <app-friend-photos [friendProfile]="friendProfile"></app-friend-photos>
+                </mat-tab>
+                <mat-tab label="Friends">
+                    <ng-template mat-tab-label>
+                        <mat-icon>group</mat-icon>&nbsp;Friends
+                    </ng-template>
+                    <app-user-friend-list></app-user-friend-list>
+                </mat-tab>
+                <mat-tab label="About">
+                    <ng-template mat-tab-label>
+                        <mat-icon>info</mat-icon>&nbsp;About
+                    </ng-template>
+                    <app-about-friend [friendProfile]="friendProfile"></app-about-friend>
+                </mat-tab>
+            </mat-tab-group>
+    </div>
+</div>
+
+

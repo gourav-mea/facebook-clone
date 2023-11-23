@@ -1,0 +1,63 @@
+<div class="container-fluid m-2">
+    <div class="card p-3">
+        <div class="card-body">
+            <h2 class="card-title text-center">User Profile</h2>
+            <form class="form" [formGroup]="userProfileForm">
+                <!-- username -->
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" formControlName="username" class="form-control">
+                </div>
+                <!-- email -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" formControlName="email" class="form-control">
+                </div>
+                <!-- Bio -->
+                <div class="form-group">
+                    <label for="bio">Bio:</label>
+                    <textarea id="bio" class="form-control" formControlName="bio" rows="3"></textarea>
+                </div>
+                <br>
+                <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" formControlName="dateOfBirth" class="form-control">
+                </div>
+                <br>
+                <!-- Gender -->
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" formControlName="gender" class="form-control">
+                        <option value="">Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHERS">Other</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Privacy Settings -->
+                <div class="form-group">
+                    <label for="privacySetting">Profile Privacy Setting:</label>
+                    <select id="privacySetting" formControlName="privacySetting" class="form-control">
+                        <option value="">Select profile privacy setting</option>
+                        <option value="PUBLIC">Public</option>
+                        <option value="PRIVATE">Private</option>
+                        <option value="ONLY_FRIENDS">Only Friends</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group" *ngIf="isEditing">
+                    <input type="file" class="card-img-top"  src="" formControlName="profilePicture" (change)="handleUpload($event)" alt="Profile Picture"><span>Choose Image</span>
+                </div>
+                <!-- Edit Button -->
+                <div class="text-center" *ngIf="!isEditing">
+                    <button type="button" id="editButton" (click)="toggleEditing()" class="btn btn-outline-dark mt-3">&nbsp;Click here to edit&nbsp;</button>
+                </div>
+                <div class="text-center" *ngIf="isEditing">
+                    <button type="button" id="editButton" (click)="submitProfile()" class="btn btn-outline-dark mt-3">&nbsp;Save&nbsp;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

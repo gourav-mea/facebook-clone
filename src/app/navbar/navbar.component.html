@@ -1,0 +1,15 @@
+<header>
+    <nav>
+        <ul>
+            <li> <a [routerLink]='["/home"]' id="fb" matTooltip="Facebook"> <mat-icon>facebook</mat-icon> </a> </li>
+            <li> <button id="search_btn" [routerLink]='["/search-user"]' matTooltip="Search"> <span class="material-icons">search</span> </button> </li>
+            <li id="space1"></li>
+            <li> <a [routerLink]='["/home"]' id="home"  class="mr-2" matTooltip="Home"> <mat-icon>home</mat-icon> </a> </li>
+            <li> <a id="group" (click)="setTabIndex(1)" class="mr-2" matTooltip="Friends"> <mat-icon>people</mat-icon> </a></li>
+            <li> <a id="friend" (click)="setTabIndex(2)" class="mr-2" matTooltip="Profile"> <mat-icon>person</mat-icon> </a> </li>
+            <li id="space1"></li>
+            <li> <button id="btn_plus" matTooltip="Logout" (click)="onLogOut()"><mat-icon>logout</mat-icon></button> </li>
+        </ul>
+    </nav>
+</header>                                                   
+

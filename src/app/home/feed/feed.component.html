@@ -1,0 +1,31 @@
+<div class="text-center container">
+    <div class="row">
+        <div class="col-7 offset-2">
+            <app-add-post></app-add-post>
+            <div *ngFor="let post of mergedPostList" class="container my-5">
+                <div class="card  mx-auto">
+                    <div class="card-header d-flex align-items-center">
+                        <div *ngIf="post.profilePicture">
+                            <img src="{{post.profilePicture}}" class="img-fluid rounded-circle" style="width: 30px;height: 30px;" alt="Profile Image">
+                        </div>
+                        <div *ngIf="!post.profilePicture">
+                            <img src="../../../assets/man.png" class="img-fluid rounded-circle" style="width: 30px;height: 30px;" alt="Profile Image">
+                        </div>
+                        <h5 class="card-title m-0"><a [routerLink]="['/friendprofile/',post.userId]" class="text-decoration-none text-dark">&nbsp;{{post.username}}</a></h5>
+                    </div>
+                    <div>
+                        <img src={{post.postImage}} class="img-fluid" alt="Image in Body">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-start">{{post.postText}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-link like-button" (click)="addLike(post.postId)"><mat-icon [style.color]="isLikedBy[post.postId] ? 'red' : 'blue'">thumb_up</mat-icon><span (click)="onLike()">{{likeArray[post.postId]}}</span></button>
+                        <button class="btn btn-link comment-button" (click)="onComment(post.postId)"><mat-icon>comment</mat-icon></button>
+                        <button class="btn btn-link comment-button" (click)="onAddComment(post.postId)"><mat-icon>add</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
