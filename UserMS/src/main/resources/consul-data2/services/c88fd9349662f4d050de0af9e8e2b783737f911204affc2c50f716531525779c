@@ -1,0 +1,1 @@
+{"Token":"","Service":{"ID":"UserMS-4000","Service":"UserMS","Tags":[],"Address":"localhost","Meta":{"secure":"false"},"Port":4000,"Weights":{"Passing":1,"Warning":1},"EnableTagOverride":false,"Proxy":{"Mode":"","MeshGateway":{},"Expose":{}},"Connect":{},"PeerName":"","CreateIndex":0,"ModifyIndex":0},"Source":"remote"}

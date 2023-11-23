@@ -1,0 +1,17 @@
+server:
+  port: 2000
+spring:
+  application:
+    name: FriendRequestMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/infy_facebook_friendrequest
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update

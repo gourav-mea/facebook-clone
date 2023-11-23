@@ -1,0 +1,31 @@
+server:
+  port: 6666
+spring:
+  application:
+    name: GatewayMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: FriendRequestMS
+          uri: lb://FriendRequestMS
+          predicates:
+            - Path=/**
+        - id: PostsMS
+          uri: lb://PostsMS
+          predicates:
+            - Path=/**
+        - id: UserMS
+          uri: lb://UserMS
+          predicates:
+            - Path=/**
+      
+
+        
+      

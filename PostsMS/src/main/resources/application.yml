@@ -1,0 +1,17 @@
+server:
+  port: 3000
+spring:
+  application:
+    name: PostsMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/infy_facebook_posts
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update

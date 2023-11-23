@@ -1,0 +1,26 @@
+server:
+  port: 4000
+spring:
+  application:
+    name: UserMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/infy_facebook_user
+    username: root
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+    
+resilience4j.circuitbreaker:
+  instances:
+    userService:
+      failureRateThreshold: 50
+      ringBufferSizeInClosedState: 5
+      ringBufferSizeInHalfOpenState: 3
+      waitDurationInOpenState: 60s
+      automaticTransitionFromOpenToHalfOpenEnabled: true
